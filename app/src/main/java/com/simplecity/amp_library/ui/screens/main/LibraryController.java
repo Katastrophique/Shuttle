@@ -99,16 +99,16 @@ public class LibraryController extends BaseFragment implements
     AppBarLayout appBarLayout;
 
     @Inject
-    NavigationEventRelay navigationEventRelay;
+    NavigationEventRelay libraryNavigationEventRelay;
 
     @Inject
     SettingsManager settingsManager;
 
     @Inject
-    MultiSheetEventRelay multiSheetEventRelay;
+    MultiSheetEventRelay libraryMultiSheetEventRelay;
 
     @Inject
-    AnalyticsManager analyticsManager;
+    AnalyticsManager libraryAnalyticsManager;
 
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
@@ -171,10 +171,10 @@ public class LibraryController extends BaseFragment implements
         super.onResume();
 
         if (!mediaManager.getQueue().isEmpty()) {
-            multiSheetEventRelay.sendEvent(new MultiSheetEventRelay.MultiSheetEvent(MultiSheetEventRelay.MultiSheetEvent.Action.SHOW_IF_HIDDEN, MultiSheetView.Sheet.NONE));
+            libraryMultiSheetEventRelay.sendEvent(new MultiSheetEventRelay.MultiSheetEvent(MultiSheetEventRelay.MultiSheetEvent.Action.SHOW_IF_HIDDEN, MultiSheetView.Sheet.NONE));
         }
 
-        navigationEventRelay.sendEvent(new NavigationEventRelay.NavigationEvent(NavigationEventRelay.NavigationEvent.Type.LIBRARY_SELECTED, null, false));
+        libraryNavigationEventRelay.sendEvent(new NavigationEventRelay.NavigationEvent(NavigationEventRelay.NavigationEvent.Type.LIBRARY_SELECTED, null, false));
     }
 
     @Override
@@ -248,7 +248,7 @@ public class LibraryController extends BaseFragment implements
 
         pager.postDelayed(() -> {
             if (pager != null) {
-                new RatingSnackbar(settingsManager, analyticsManager).show(pager, () -> {
+                new RatingSnackbar(settingsManager, libraryAnalyticsManager).show(pager, () -> {
                     ShuttleUtils.openShuttleLink(getActivity(), getActivity().getPackageName(), getActivity().getPackageManager());
                     return Unit.INSTANCE;
                 });

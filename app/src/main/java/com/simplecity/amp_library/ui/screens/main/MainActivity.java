@@ -74,17 +74,17 @@ public class MainActivity extends BaseActivity implements
     Repository.SongsRepository songsRepository;
 
     @Inject
-    AnalyticsManager analyticsManager;
+    AnalyticsManager mainAnalyticsManager;
 
     @Inject
-    SettingsManager settingsManager;
+    SettingsManager mainSettingsManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
 
-        analyticsManager.dropBreadcrumb(TAG, "onCreate()");
+        mainAnalyticsManager.dropBreadcrumb(TAG, "onCreate()");
 
         // If we haven't set any defaults, do that now
         if (Aesthetic.isFirstTime(this)) {
@@ -99,7 +99,7 @@ public class MainActivity extends BaseActivity implements
                     .colorStatusBarAuto()
                     .apply();
 
-            analyticsManager.logInitialTheme(theme);
+            mainAnalyticsManager.logInitialTheme(theme);
         }
 
         setContentView(R.layout.activity_main);
@@ -130,7 +130,7 @@ public class MainActivity extends BaseActivity implements
     @Override
     public void onResume() {
         super.onResume();
-        analyticsManager.dropBreadcrumb(TAG, "onCreate()");
+        mainAnalyticsManager.dropBreadcrumb(TAG, "onCreate()");
 
         showChangelogDialog();
     }
@@ -138,7 +138,7 @@ public class MainActivity extends BaseActivity implements
     @Override
     public void onServiceConnected(ComponentName name, IBinder service) {
         super.onServiceConnected(name, service);
-        analyticsManager.dropBreadcrumb(TAG, "onServiceConnected()");
+        mainAnalyticsManager.dropBreadcrumb(TAG, "onServiceConnected()");
 
         handlePendingPlaybackRequest();
     }
@@ -154,14 +154,14 @@ public class MainActivity extends BaseActivity implements
     protected void onPause() {
         super.onPause();
 
-        analyticsManager.dropBreadcrumb(TAG, "onPause()");
+        mainAnalyticsManager.dropBreadcrumb(TAG, "onPause()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
 
-        analyticsManager.dropBreadcrumb(TAG, "onDestroy()");
+        mainAnalyticsManager.dropBreadcrumb(TAG, "onDestroy()");
     }
 
     private void handleIntent(Intent intent) {
@@ -214,7 +214,6 @@ public class MainActivity extends BaseActivity implements
 
         if (uri != null && uri.toString().length() > 0) {
             mediaManager.playFile(uri);
-            // Make sure to process intent only once
             setIntent(new Intent());
         } else if (MediaStore.Audio.Playlists.CONTENT_TYPE.equals(mimeType)) {
             long id = parseIdFromIntent(intent, "playlistId", "playlist");
@@ -228,10 +227,8 @@ public class MainActivity extends BaseActivity implements
                                 playlist -> {
                                     mediaManager.playAll(songsRepository.getSongs(playlist).first(new ArrayList<>()),
                                             () -> {
-                                                // Todo: Show playback failure toast
                                                 return Unit.INSTANCE;
                                             });
-                                    // Make sure to process intent only once
                                     setIntent(new Intent());
                                 },
                                 error -> LogUtils.logException(TAG, "Error handling playback request", error)
@@ -258,17 +255,17 @@ public class MainActivity extends BaseActivity implements
     }
 
     private void showChangelogDialog() {
-        int storedVersionCode = settingsManager.getStoredVersionCode();
+        int storedVersionCode = mainSettingsManager.getStoredVersionCode();
 
         // If we've stored a version code in the past, and it's lower than the current version code,
         // we can show the changelog.
         // Don't show the changelog for first time users.
         if (storedVersionCode != -1 && storedVersionCode < BuildConfig.VERSION_CODE) {
-            if (settingsManager.getShowChangelogOnLaunch()) {
+            if (mainSettingsManager.getShowChangelogOnLaunch()) {
                 ChangelogDialog.Companion.newInstance().show(getSupportFragmentManager());
             }
         }
-        settingsManager.setVersionCode();
+        mainSettingsManager.setVersionCode();
     }
 
     @Override

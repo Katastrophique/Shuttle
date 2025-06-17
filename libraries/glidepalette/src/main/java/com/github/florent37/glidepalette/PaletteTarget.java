@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class PaletteTarget {
 
-    @BitmapPalette.Profile
-    protected int paletteProfile = GlidePalette.Profile.VIBRANT;
+    @com.github.florent37.glidepalette.BitmapPalette.Profile
+    protected int paletteProfile = com.github.florent37.glidepalette.BitmapPalette.Profile.VIBRANT;
 
     protected ArrayList<Pair<View, Integer>> targetsBackground = new ArrayList<>();
     protected ArrayList<Pair<TextView, Integer>> targetsText = new ArrayList<>();
@@ -18,7 +18,7 @@ public class PaletteTarget {
     protected int targetCrossfadeSpeed = DEFAULT_CROSSFADE_SPEED;
     protected static final int DEFAULT_CROSSFADE_SPEED = 300;
 
-    public PaletteTarget(@BitmapPalette.Profile int paletteProfile) {
+    public PaletteTarget(@com.github.florent37.glidepalette.BitmapPalette.Profile int paletteProfile) {
         this.paletteProfile = paletteProfile;
     }
 

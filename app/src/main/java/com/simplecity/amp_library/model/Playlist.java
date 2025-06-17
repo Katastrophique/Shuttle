@@ -28,13 +28,13 @@ public class Playlist implements Serializable {
     @Type
     public int type;
 
-    public long id;
-    public String name;
-    public boolean canEdit = true;
-    public boolean canClear = false;
-    public boolean canDelete = true;
-    public boolean canRename = true;
-    public boolean canSort = true;
+    private long id;
+    private String name;
+    private boolean canEdit;
+    private boolean canClear;
+    private boolean canDelete;
+    private boolean canRename;
+    private boolean canSort;
 
     // These are the Playlist rows that we will retrieve.
     public static final String[] PROJECTION = new String[] {
@@ -130,4 +130,19 @@ public class Playlist implements Serializable {
         song.playlistSongPlayOrder = cursor.getLong(cursor.getColumnIndexOrThrow(MediaStore.Audio.Playlists.Members.PLAY_ORDER));
         return song;
     }
+
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public boolean isCanEdit() { return canEdit; }
+    public void setCanEdit(boolean canEdit) { this.canEdit = canEdit; }
+    public boolean isCanClear() { return canClear; }
+    public void setCanClear(boolean canClear) { this.canClear = canClear; }
+    public boolean isCanDelete() { return canDelete; }
+    public void setCanDelete(boolean canDelete) { this.canDelete = canDelete; }
+    public boolean isCanRename() { return canRename; }
+    public void setCanRename(boolean canRename) { this.canRename = canRename; }
+    public boolean isCanSort() { return canSort; }
+    public void setCanSort(boolean canSort) { this.canSort = canSort; }
 }

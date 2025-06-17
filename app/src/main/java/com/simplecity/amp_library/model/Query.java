@@ -5,11 +5,22 @@ import java.util.Arrays;
 
 public class Query {
 
-    public Uri uri;
-    public String[] projection;
-    public String selection;
-    public String[] args;
-    public String sort;
+    private Uri uri;
+    private String[] projection;
+    private String selection;
+    private String[] args;
+    private String sort;
+
+    public Uri getUri() { return uri; }
+    public void setUri(Uri uri) { this.uri = uri; }
+    public String[] getProjection() { return projection; }
+    public void setProjection(String[] projection) { this.projection = projection; }
+    public String getSelection() { return selection; }
+    public void setSelection(String selection) { this.selection = selection; }
+    public String[] getArgs() { return args; }
+    public void setArgs(String[] args) { this.args = args; }
+    public String getSort() { return sort; }
+    public void setSort(String sort) { this.sort = sort; }
 
     Query(Builder builder) {
         uri = builder.uri;

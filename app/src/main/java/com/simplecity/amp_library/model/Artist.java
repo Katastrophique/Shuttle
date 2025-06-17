@@ -4,10 +4,22 @@ import java.io.Serializable;
 
 public class Artist implements Serializable {
 
-    public long id;
-    public String name;
-    public int numAlbums;
-    public int numSongs;
+    private long id;
+    private String name;
+    private int numAlbums;
+    private int numSongs;
+
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public int getNumAlbums() { return numAlbums; }
+    public void setNumAlbums(int numAlbums) { this.numAlbums = numAlbums; }
+
+    public int getNumSongs() { return numSongs; }
+    public void setNumSongs(int numSongs) { this.numSongs = numSongs; }
 
     public Artist(long id, String name) {
         this.id = id;

@@ -24,9 +24,13 @@ public class AlbumArtist implements
         ArtworkProvider,
         Sortable {
 
-    public String name;
+    private String name;
+    private List<Album> albums;
 
-    public List<Album> albums = new ArrayList<>();
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public List<Album> getAlbums() { return albums; }
+    public void setAlbums(List<Album> albums) { this.albums = albums; }
 
     private String sortKey;
 

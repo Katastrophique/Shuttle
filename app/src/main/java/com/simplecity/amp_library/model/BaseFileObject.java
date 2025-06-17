@@ -7,12 +7,19 @@ import java.io.Serializable;
 
 public class BaseFileObject implements Serializable {
 
-    public String name;
-    public String path;
-    public long size;
+    private String name;
+    private String path;
+    private long size;
 
     @FileType
     public int fileType;
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getPath() { return path; }
+    public void setPath(String path) { this.path = path; }
+    public long getSize() { return size; }
+    public void setSize(long size) { this.size = size; }
 
     public File getParent() {
         File file = new File(path);

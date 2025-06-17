@@ -22,26 +22,54 @@ public class Album implements
         Comparable<Album>,
         Sortable {
 
-    public long id;
-    public String name;
-
-    public List<Artist> artists = new ArrayList<>();
-    public String albumArtistName;
-
-    public int year;
-    public int numSongs;
-    public int numDiscs;
-
-    public long lastPlayed;
-    public long dateAdded;
-
-    public List<String> paths = new ArrayList<>();
-
-    public int songPlayCount;
+    private long id;
+    private String name;
+    private List<Artist> artists;
+    private String albumArtistName;
+    private int year;
+    private int numSongs;
+    private int numDiscs;
+    private long lastPlayed;
+    private long dateAdded;
+    private List<String> paths;
+    private int songPlayCount;
 
     private String artworkKey;
 
     private String sortKey;
+
+    public long getId() { return id; }
+    public void setId(long id) { this.id = id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public List<Artist> getArtists() { return artists; }
+    public void setArtists(List<Artist> artists) { this.artists = artists; }
+
+    public String getAlbumArtistName() { return albumArtistName; }
+    public void setAlbumArtistName(String albumArtistName) { this.albumArtistName = albumArtistName; }
+
+    public int getYear() { return year; }
+    public void setYear(int year) { this.year = year; }
+
+    public int getNumSongs() { return numSongs; }
+    public void setNumSongs(int numSongs) { this.numSongs = numSongs; }
+
+    public int getNumDiscs() { return numDiscs; }
+    public void setNumDiscs(int numDiscs) { this.numDiscs = numDiscs; }
+
+    public long getLastPlayed() { return lastPlayed; }
+    public void setLastPlayed(long lastPlayed) { this.lastPlayed = lastPlayed; }
+
+    public long getDateAdded() { return dateAdded; }
+    public void setDateAdded(long dateAdded) { this.dateAdded = dateAdded; }
+
+    public List<String> getPaths() { return paths; }
+    public void setPaths(List<String> paths) { this.paths = paths; }
+
+    public int getSongPlayCount() { return songPlayCount; }
+    public void setSongPlayCount(int songPlayCount) { this.songPlayCount = songPlayCount; }
 
     public Album(long id, String name, List<Artist> artists, String albumArtistName, int numSongs, int numDiscs, int year, long lastPlayed, long dateAdded, List<String> paths, int songPlayCount) {
         this.id = id;

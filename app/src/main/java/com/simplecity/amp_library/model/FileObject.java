@@ -7,9 +7,9 @@ import com.simplecity.amp_library.utils.StringUtils;
 
 public class FileObject extends BaseFileObject {
 
-    public String extension;
+    private String extension;
 
-    public TagInfo tagInfo;
+    private TagInfo tagInfo;
 
     private long duration = 0;
 
@@ -23,6 +23,11 @@ public class FileObject extends BaseFileObject {
         }
         return StringUtils.makeTimeString(context, duration / 1000);
     }
+
+    public String getExtension() { return extension; }
+    public void setExtension(String extension) { this.extension = extension; }
+    public TagInfo getTagInfo() { return tagInfo; }
+    public void setTagInfo(TagInfo tagInfo) { this.tagInfo = tagInfo; }
 
     @Override
     public String toString() {

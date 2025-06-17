@@ -7,14 +7,18 @@ import java.util.List;
 @SuppressWarnings("WeakerAccess")
 public class LastFmAlbum implements LastFmResult {
 
-    @SerializedName("album")
-    public Album album;
+    private Album album;
+    public Album getAlbum() { return album; }
 
     public static class Album {
-        public String name;
+        private String name;
         @SerializedName("image")
-        public List<LastFmImage> images = new ArrayList<>();
-        public Wiki wiki;
+        private List<LastFmImage> images = new ArrayList<>();
+        private Wiki wiki;
+
+        public String getName() { return name; }
+        public List<LastFmImage> getImages() { return images; }
+        public Wiki getWiki() { return wiki; }
     }
 
     @Override
@@ -27,6 +31,7 @@ public class LastFmAlbum implements LastFmResult {
     }
 
     public static class Wiki {
-        public String summary;
+        private String summary;
+        public String getSummary() { return summary; }
     }
 }

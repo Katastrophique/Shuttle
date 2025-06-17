@@ -23,28 +23,28 @@ public class SettingsManager extends BaseSettingsManager {
     }
 
     // Support
-    public static String KEY_PREF_CHANGELOG = "pref_changelog";
-    public static String KEY_PREF_FAQ = "pref_faq";
-    public static String KEY_PREF_HELP = "pref_help";
-    public static String KEY_PREF_RATE = "pref_rate";
-    public static String KEY_PREF_RESTORE_PURCHASES = "pref_restore_purchases";
+    public static final String KEY_PREF_CHANGELOG = "pref_changelog";
+    public static final String KEY_PREF_FAQ = "pref_faq";
+    public static final String KEY_PREF_HELP = "pref_help";
+    public static final String KEY_PREF_RATE = "pref_rate";
+    public static final String KEY_PREF_RESTORE_PURCHASES = "pref_restore_purchases";
 
     // Display
-    public static String KEY_PREF_TAB_CHOOSER = "pref_tab_chooser";
-    public static String KEY_PREF_DEFAULT_PAGE = "pref_default_page";
-    public static String KEY_DISPLAY_REMAINING_TIME = "pref_display_remaining_time";
+    public static final String KEY_PREF_TAB_CHOOSER = "pref_tab_chooser";
+    public static final String KEY_PREF_DEFAULT_PAGE = "pref_default_page";
+    public static final String KEY_DISPLAY_REMAINING_TIME = "pref_display_remaining_time";
 
     // Themes
-    public static String KEY_PREF_THEME_BASE = "pref_theme_base";
-    public static String KEY_PREF_PRIMARY_COLOR = "pref_theme_primary_color";
-    public static String KEY_PREF_ACCENT_COLOR = "pref_theme_accent_color";
-    public static String KEY_PREF_NAV_BAR = "pref_nav_bar";
-    public static String KEY_PREF_PALETTE = "pref_theme_use_palette";
-    public static String KEY_PREF_PALETTE_NOW_PLAYING_ONLY = "pref_theme_use_palette_now_playing";
+    public static final String KEY_PREF_THEME_BASE = "pref_theme_base";
+    public static final String KEY_PREF_PRIMARY_COLOR = "pref_theme_primary_color";
+    public static final String KEY_PREF_ACCENT_COLOR = "pref_theme_accent_color";
+    public static final String KEY_PREF_NAV_BAR = "pref_nav_bar";
+    public static final String KEY_PREF_PALETTE = "pref_theme_use_palette";
+    public static final String KEY_PREF_PALETTE_NOW_PLAYING_ONLY = "pref_theme_use_palette_now_playing";
 
     // Artwork
-    public static String KEY_PREF_DOWNLOAD_ARTWORK = "pref_download_artwork";
-    public static String KEY_PREF_DELETE_ARTWORK = "pref_delete_artwork";
+    public static final String KEY_PREF_DOWNLOAD_ARTWORK = "pref_download_artwork";
+    public static final String KEY_PREF_DELETE_ARTWORK = "pref_delete_artwork";
 
     // Scrobbler
     public static String KEY_PREF_DOWNLOAD_SCROBBLER = "pref_download_simple_lastfm_scrobbler";

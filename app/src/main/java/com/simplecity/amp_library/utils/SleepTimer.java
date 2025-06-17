@@ -25,7 +25,7 @@ public final class SleepTimer {
 
     private boolean isActive;
 
-    public boolean playToEnd = false;
+    private boolean playToEnd = false;
 
     private int timeRemaining = 0;
 
@@ -155,4 +155,7 @@ public final class SleepTimer {
             inputMethodManager.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
         });
     }
+
+    public boolean isPlayToEnd() { return playToEnd; }
+    public void setPlayToEnd(boolean playToEnd) { this.playToEnd = playToEnd; }
 }

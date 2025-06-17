@@ -2,9 +2,11 @@ package com.simplecity.amp_library.model;
 
 public class UserSelectedArtwork {
 
-    @ArtworkProvider.Type
-    public int type;
-    public String path;
+    private int type;
+    private String path;
+
+    public int getType() { return type; }
+    public String getPath() { return path; }
 
     public UserSelectedArtwork(@ArtworkProvider.Type int type, String path) {
         this.type = type;

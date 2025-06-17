@@ -8,10 +8,11 @@ public class ArtworkModel {
 
     private static final String TAG = "ArtworkModel";
 
-    @ArtworkProvider.Type
-    public int type;
+    private int type;
+    private File file;
 
-    public File file;
+    public int getType() { return type; }
+    public File getFile() { return file; }
 
     public ArtworkModel(@ArtworkProvider.Type int type, File file) {
         this.type = type;

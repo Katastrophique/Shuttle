@@ -14,9 +14,8 @@ public class HttpClient {
 
     private static HttpClient sInstance;
 
-    public OkHttpClient okHttpClient;
-
-    public LastFmService lastFmService;
+    private OkHttpClient okHttpClient;
+    private LastFmService lastFmService;
 
     public static final String TAG_ARTWORK = "artwork";
 
@@ -40,4 +39,7 @@ public class HttpClient {
                 .build();
         lastFmService = lastFmRestAdapter.create(LastFmService.class);
     }
+
+    public OkHttpClient getOkHttpClient() { return okHttpClient; }
+    public LastFmService getLastFmService() { return lastFmService; }
 }

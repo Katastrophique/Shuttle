@@ -179,7 +179,7 @@ public class MultiSheetView extends CoordinatorLayout {
         if (isHidden()) {
             int peekHeight = getContext().getResources().getDimensionPixelSize(R.dimen.bottom_sheet_peek_1_height);
             int currentHeight = bottomSheetBehavior1.getPeekHeight();
-            float ratio = 1 - (currentHeight / peekHeight);
+            float ratio = 1 - ((float) currentHeight / peekHeight);
             if (animate) {
                 ValueAnimator valueAnimator = ValueAnimator.ofInt(bottomSheetBehavior1.getPeekHeight(), peekHeight);
                 valueAnimator.setDuration((long) (200 * ratio));
@@ -215,15 +215,14 @@ public class MultiSheetView extends CoordinatorLayout {
     /**
      * @return the currently expanded Sheet
      */
-    @Sheet
     public int getCurrentSheet() {
-        if (bottomSheetBehavior2.getState() == BottomSheetBehavior.STATE_EXPANDED) {
-            return Sheet.SECOND;
-        } else if (bottomSheetBehavior1.getState() == BottomSheetBehavior.STATE_EXPANDED) {
-            return Sheet.FIRST;
-        } else {
-            return Sheet.NONE;
-        }
+        return getCurrentSheetState();
+    }
+
+    private int getCurrentSheetState() {
+        if (bottomSheetBehavior2.getState() == BottomSheetBehavior.STATE_EXPANDED) return Sheet.SECOND;
+        if (bottomSheetBehavior1.getState() == BottomSheetBehavior.STATE_EXPANDED) return Sheet.FIRST;
+        return Sheet.NONE;
     }
 
     public void restoreSheet(@Sheet int sheet) {

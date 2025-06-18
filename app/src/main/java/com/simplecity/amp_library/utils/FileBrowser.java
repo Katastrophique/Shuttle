@@ -51,8 +51,12 @@ public class FileBrowser {
 
         if (files != null) {
             for (File file : files) {
+                // Combine both continue conditions at the top
+                if ((file.isDirectory() && (file.listFiles(FileHelper.getAudioFilter()) == null || file.listFiles(FileHelper.getAudioFilter()).length == 0))
+                        || (!file.isDirectory() && TextUtils.isEmpty(FileHelper.getExtension(file.getName())))) {
+                    continue;
+                }
                 BaseFileObject baseFileObject;
-
                 if (file.isDirectory()) {
                     baseFileObject = new FolderObject();
                     baseFileObject.path = FileHelper.getPath(file);
@@ -66,8 +70,6 @@ public class FileBrowser {
                                 ((FolderObject) baseFileObject).fileCount++;
                             }
                         }
-                    } else {
-                        continue;
                     }
                     if (!folderObjects.contains(baseFileObject)) {
                         folderObjects.add(baseFileObject);
@@ -78,11 +80,7 @@ public class FileBrowser {
                     baseFileObject.name = FileHelper.getName(file.getName());
                     baseFileObject.size = file.length();
                     ((FileObject) baseFileObject).extension = FileHelper.getExtension(file.getName());
-                    if (TextUtils.isEmpty(((FileObject) baseFileObject).extension)) {
-                        continue;
-                    }
                     ((FileObject) baseFileObject).tagInfo = new TagInfo(baseFileObject.path);
-
                     if (!fileObjects.contains(baseFileObject)) {
                         fileObjects.add(baseFileObject);
                     }

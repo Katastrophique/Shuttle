@@ -20,7 +20,7 @@ public class StringUtils {
 
     private static Formatter sFormatter = new Formatter(sFormatBuilder, Locale.getDefault());
 
-    private static Pattern pattern = Pattern.compile("^(?i)\\s*(?:the |an |a )|(?:, the|, an|, a)\\s*$|[\\[\\]()!?.,']");
+    private static Pattern pattern = Pattern.compile("^(?i)\\s*(?:the |an |a )|, the|, an|, a\\s*$|[\\[\\]!?.,']");
 
     private StringUtils() {
 
@@ -37,7 +37,7 @@ public class StringUtils {
      */
     public static String makeTimeString(@NonNull Context context, long secs) {
         sFormatBuilder.setLength(0);
-        //return (secs < 0 ? "- " : "") + (Math.abs(secs) < 3600 ? makeShortTimeString(context, Math.abs(secs)) : makeLongTimeString(context, Math.abs(secs)));
+        //return secs < 0 ? "- " : "" + Math.abs(secs) < 3600 ? makeShortTimeString(context, Math.abs(secs)) : makeLongTimeString(context, Math.abs(secs));
         return Math.abs(secs) < 3600 ? makeShortTimeString(context, secs) : makeLongTimeString(context, secs);
     }
 

@@ -2,7 +2,7 @@ package com.simplecity.amp_library.ui.common;
 
 import com.simplecity.amp_library.ui.views.PurchaseView;
 
-public class PurchasePresenter<V extends PurchaseView> {
+public class PurchasePresenter {
 
     public void upgradeClicked() {
         PurchaseView purchaseView = getView();

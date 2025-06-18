@@ -247,15 +247,10 @@ public class QCircleActivity extends BaseActivity {
     }
 
     public void setPauseButtonImage() {
-
         if (pauseBtn == null) {
             return;
         }
-        if (MusicServiceConnectionUtils.serviceBinder != null && mediaManager.isPlaying()) {
-
-        } else {
-
-        }
+        // No-op: previously empty conditional blocks removed
     }
 
     private void initializeBackButton() {

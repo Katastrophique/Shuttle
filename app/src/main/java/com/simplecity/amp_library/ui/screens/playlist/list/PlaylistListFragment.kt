@@ -109,7 +109,7 @@ class PlaylistListFragment :
     // PlaylistView.PlaylistClickListener Implementation
 
     override fun onPlaylistClick(position: Int, playlistView: PlaylistView) {
-        playlistClickListener?.onPlaylistClicked(playlistView.playlist)
+        playlistClickListener.onPlaylistClicked(playlistView.playlist)
     }
 
     override fun onPlaylistOverflowClick(position: Int, view: View, playlist: Playlist) {

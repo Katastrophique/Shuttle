@@ -53,6 +53,9 @@ abstract class LocalPlayback(context: Context) : Playback {
 
     override var callbacks: Callbacks? = null
 
+    // Track if playback was paused manually by the user
+    private var manuallyPaused: Boolean = false
+
     private val audioNoisyReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context, intent: Intent) {
             if (AudioManager.ACTION_AUDIO_BECOMING_NOISY == intent.action) {
@@ -90,19 +93,21 @@ abstract class LocalPlayback(context: Context) : Playback {
     }
 
     override fun willResumePlayback(): Boolean {
-        // Fixme: This returns true even after manually pausing playback. This should not be the case.
-        return playOnFocusGain
+        // Only return true if playback was interrupted by focus loss, not manual pause
+        return playOnFocusGain && !manuallyPaused
     }
 
     @CallSuper
     override fun pause(fade: Boolean) {
         playOnFocusGain = false
+        manuallyPaused = true
         unregisterAudioNoisyReceiver()
     }
 
     @CallSuper
     override fun stop() {
         playOnFocusGain = false
+        manuallyPaused = false
         giveUpAudioFocus()
         unregisterAudioNoisyReceiver()
     }
@@ -110,6 +115,7 @@ abstract class LocalPlayback(context: Context) : Playback {
     @CallSuper
     override fun start() {
         playOnFocusGain = true
+        manuallyPaused = false
         tryToGetAudioFocus()
         registerAudioNoisyReceiver()
     }

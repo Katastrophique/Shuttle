@@ -23,4 +23,13 @@ public class FolderObject extends BaseFileObject {
                 ", folderCount=" + folderCount +
                 "} " + super.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FolderObject)) return false;
+        if (!super.equals(o)) return false;
+        FolderObject that = (FolderObject) o;
+        return fileCount == that.fileCount && folderCount == that.folderCount;
+    }
 }

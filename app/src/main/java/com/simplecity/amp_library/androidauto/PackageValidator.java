@@ -49,7 +49,7 @@ public class PackageValidator {
      */
     private final Map<String, ArrayList<CallerInfo>> mValidCertificates;
 
-    public PackageValidator(Context ctx) {
+    private PackageValidator() {
         mValidCertificates = readValidCertificates(ctx.getResources().getXml(
                 R.xml.allowed_media_browser_callers));
     }

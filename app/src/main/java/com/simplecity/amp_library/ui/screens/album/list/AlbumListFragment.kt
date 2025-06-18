@@ -202,7 +202,7 @@ class AlbumListFragment :
             gridMenuItem.isVisible = false
         } else {
             gridMenuItem.isVisible = true
-            gridMenuItem.subMenu?.findItem(settingsManager.getAlbumColumnCount(context))?.isChecked = true
+            gridMenuItem.subMenu.findItem(settingsManager.getAlbumColumnCount(context)).isChecked = true
         }
     }
 
@@ -295,7 +295,7 @@ class AlbumListFragment :
         // Note: For album-shuffle mode, we don't actually turn shuffle on.
         mediaManager.shuffleMode = QueueManager.ShuffleMode.OFF
 
-        mediaManager.playAll(songsRepository.getSongs(null as Function1<Song, Boolean>?)
+        mediaManager.playAll(songsRepository.getSongs(null)
             .firstOrError()
             .map { songs -> Operators.albumShuffleSongs(songs, sortManager) }) {
             // Show playback failed toast

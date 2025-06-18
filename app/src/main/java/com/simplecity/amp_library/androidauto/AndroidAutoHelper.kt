@@ -82,7 +82,7 @@ class MediaIdHelper(
                         uri.pathSegments.contains("playlists") -> MediaIdWrapper.PlaylistDirectory
                         uri.pathSegments.contains("genres") -> MediaIdWrapper.GenreDirectory
                         else -> {
-                            throw IllegalStateException("Unknown MediaId '$mediaId' path")
+                            error("Unknown MediaId '$mediaId' path")
                         }
                     }
                 } else {
@@ -188,10 +188,11 @@ class MediaIdHelper(
 
     fun handlePlayFromSearch(query: String, extras: Bundle): Single<Pair<List<Song>, Int>> {
         val mediaFocus = extras.getString(MediaStore.EXTRA_MEDIA_FOCUS)
+        var result: Single<Pair<List<Song>, Int>>? = null
         when (mediaFocus) {
             MediaStore.Audio.Artists.ENTRY_CONTENT_TYPE -> {
                 extras.getString(MediaStore.EXTRA_MEDIA_ARTIST)?.let { artist ->
-                    return getSongsForPredicate { song -> song.artistName.equals(artist, true) }
+                    result = getSongsForPredicate { song -> song.artistName.equals(artist, true) }
                         .map { songs ->
                             Pair(songs
                                 .sortedBy { song -> song.albumName }
@@ -204,7 +205,7 @@ class MediaIdHelper(
             }
             MediaStore.Audio.Albums.ENTRY_CONTENT_TYPE -> {
                 extras.getString(MediaStore.EXTRA_MEDIA_ALBUM)?.let { album ->
-                    return getSongsForPredicate { song -> song.albumName.equals(album, true) }
+                    result = getSongsForPredicate { song -> song.albumName.equals(album, true) }
                         .map { songs ->
                             Pair(songs
                                 .sortedBy { song -> song.track }
@@ -216,7 +217,7 @@ class MediaIdHelper(
             }
             MediaStore.Audio.Genres.ENTRY_CONTENT_TYPE -> {
                 extras.getString(MediaStore.EXTRA_MEDIA_GENRE)?.let { genreName ->
-                    return genresRepository.getGenres()
+                    result = genresRepository.getGenres()
                         .first(emptyList())
                         .flatMap { genres -> Single.just(genres.first { genre -> genre.name == genreName }) }
                         .flatMap { genresSingle -> genresSingle.getSongsObservable(application) }
@@ -226,7 +227,7 @@ class MediaIdHelper(
                 }
             }
         }
-
+        if (result != null) return result!!
         return getSongsForPredicate { song -> song.name.contains(query, true) }
             .flatMap { songs ->
                 if (songs.isEmpty()) {

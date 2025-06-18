@@ -515,11 +515,8 @@ class GenreDetailFragment :
 
     override fun setData(albums: List<Album>, songs: List<Song>) {
         val viewModels = ArrayList<ViewModel<*>>()
-
         if (!albums.isEmpty()) {
-
             val items = ArrayList<ViewModel<*>>()
-
             setHorizontalItemsDisposable?.dispose()
             analyticsManager.dropBreadcrumb(TAG, "horizontalRecyclerView.setItems()")
             setHorizontalItemsDisposable = horizontalRecyclerView.setItems(albums
@@ -531,15 +528,11 @@ class GenreDetailFragment :
                 })
             items.add(SubheaderView(StringUtils.makeAlbumsLabel(context!!, albums.size)))
             items.add(horizontalRecyclerView)
-
             viewModels.addAll(items)
         }
-
         if (!songs.isEmpty()) {
             val items = ArrayList<ViewModel<*>>()
-
             items.add(SubheaderView(StringUtils.makeSongsAndTimeLabel(context!!, songs.size, Stream.of(songs).mapToLong { song -> song.duration / 1000 }.sum())))
-
             items.addAll(
                 songs
                     .map { song ->
@@ -548,13 +541,11 @@ class GenreDetailFragment :
                         songView
                     }.toList()
             )
-
             viewModels.addAll(items)
         }
         if (viewModels.isEmpty()) {
             viewModels.add(emptyView)
         }
-
         setItemsDisposable = adapter.setItems(viewModels, object : CompletionListUpdateCallbackAdapter() {
             override fun onComplete() {
                 recyclerView?.scheduleLayoutAnimation()

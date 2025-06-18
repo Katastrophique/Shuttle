@@ -102,13 +102,6 @@ public class ShuttleApplication extends DaggerApplication {
             return;
         }
 
-        // Todo: Remove for production builds. Useful for tracking down crashes in beta.
-        RxDogTag.install();
-
-        if (BuildConfig.DEBUG) {
-            // enableStrictMode();
-        }
-
         refWatcher = LeakCanary.install(this);
         // workaround to fix InputMethodManager leak as suggested by LeakCanary lib
         InputMethodManagerLeaks.fixFocusedViewLeak(this);
@@ -218,7 +211,7 @@ public class ShuttleApplication extends DaggerApplication {
         try {
             return getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
         } catch (PackageManager.NameNotFoundException | NullPointerException ignored) {
-
+            // Intentionally ignored: if version cannot be determined, 'unknown' will be returned.
         }
         return "unknown";
     }
@@ -375,19 +368,6 @@ public class ShuttleApplication extends DaggerApplication {
                     getContentResolver().applyBatch(MediaStore.AUTHORITY, new ArrayList<>(contentProviderOperations));
                 })
                 .flatMapCompletable(songs -> Completable.complete());
-    }
-
-    private void enableStrictMode() {
-        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .build());
-
-        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
-                .detectAll()
-                .penaltyLog()
-                .penaltyFlashScreen()
-                .build());
     }
 
     public HashMap<String, UserSelectedArtwork> getUserSelectedArtwork() {

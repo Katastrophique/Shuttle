@@ -9,26 +9,26 @@ public abstract class TransitionListenerAdapter implements Transition.Transition
 
     @Override
     public void onTransitionStart(Transition transition) {
-
+        // This method is intentionally left empty to allow subclasses to override only the methods they need.
     }
 
     @Override
     public void onTransitionEnd(Transition transition) {
-
+        // This method is intentionally left empty to allow subclasses to override only the methods they need.
     }
 
     @Override
     public void onTransitionCancel(Transition transition) {
-
+        // This method is intentionally left empty to allow subclasses to override only the methods they need.
     }
 
     @Override
     public void onTransitionPause(Transition transition) {
-
+        // This method is intentionally left empty to allow subclasses to override only the methods they need.
     }
 
     @Override
     public void onTransitionResume(Transition transition) {
-
+        // This method is intentionally left empty to allow subclasses to override only the methods they need.
     }
 }

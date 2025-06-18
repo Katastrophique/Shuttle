@@ -71,6 +71,10 @@ public class Album implements
     public int getSongPlayCount() { return songPlayCount; }
     public void setSongPlayCount(int songPlayCount) { this.songPlayCount = songPlayCount; }
 
+    /**
+     * @deprecated Use {@link Album.Builder} instead for constructing Album instances.
+     */
+    @Deprecated
     public Album(long id, String name, List<Artist> artists, String albumArtistName, int numSongs, int numDiscs, int year, long lastPlayed, long dateAdded, List<String> paths, int songPlayCount) {
         this.id = id;
         this.name = name;
@@ -83,7 +87,6 @@ public class Album implements
         this.dateAdded = dateAdded;
         this.paths = paths;
         this.songPlayCount = songPlayCount;
-
         //Populate the artwork key & sort key properties if null.
         setSortKey();
         setArtworkKey();

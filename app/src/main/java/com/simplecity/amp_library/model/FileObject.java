@@ -36,4 +36,15 @@ public class FileObject extends BaseFileObject {
                 ", size='" + size + '\'' +
                 "} " + super.toString();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof FileObject)) return false;
+        if (!super.equals(o)) return false;
+        FileObject that = (FileObject) o;
+        if (duration != that.duration) return false;
+        if (extension != null ? !extension.equals(that.extension) : that.extension != null) return false;
+        return tagInfo != null ? tagInfo.equals(that.tagInfo) : that.tagInfo == null;
+    }
 }

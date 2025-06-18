@@ -80,7 +80,7 @@ public class PackageValidator {
                 eventType = parser.next();
             }
         } catch (XmlPullParserException | IOException e) {
-            Log.e(TAG, String.format("%s Could not read allowed callers from XML.", e));
+            Log.e(TAG, e + " Could not read allowed callers from XML.");
         }
         return validCertificates;
     }
@@ -122,7 +122,7 @@ public class PackageValidator {
         }
 
         // Check if the package name is valid for the certificate:
-        StringBuffer expectedPackages = new StringBuffer();
+        StringBuilder expectedPackages = new StringBuilder();
         for (CallerInfo info : validCallers) {
             if (callingPackage.equals(info.packageName)) {
                 Log.v(TAG, String.format("Valid caller: %s  package=%s release=%s", info.name, info.packageName, info.release));

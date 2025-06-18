@@ -163,7 +163,7 @@ public class StringUtils {
             return context.getResources().getString(R.string.unknown_year);
         }
 
-        return String.format("%s", year);
+        return String.valueOf(year);
     }
 
     public static String makeSongsAndTimeLabel(Context context, int numSongs, long secs) {

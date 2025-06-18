@@ -23,10 +23,7 @@ public class LetterDrawable extends Drawable {
         mPaint = paint;
         mKeyName = StringUtils.keyFor(displayName);
         if (displayName != null && displayName.length() != 0) {
-            String key = StringUtils.keyFor(displayName);
-            if (key != null && key.length() != 0) {
-                mFirstChar = new char[] { Character.toUpperCase(key.charAt(0)) };
-            }
+            mFirstChar = new char[] { Character.toUpperCase(displayName.charAt(0)) };
         }
     }
 

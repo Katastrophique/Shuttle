@@ -22,10 +22,18 @@ public class LastFmArtist implements LastFmResult {
     public void setSummary(String summary) { this.summary = summary; }
 
     public static class Artist {
-        public String name;
+        private String name;
         @SerializedName("image")
         public List<LastFmImage> images = new ArrayList<>();
         public Bio bio;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 
     @Override

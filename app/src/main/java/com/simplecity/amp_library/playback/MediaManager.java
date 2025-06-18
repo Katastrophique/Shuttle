@@ -28,13 +28,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class MediaManager {
 
-    public interface Defs {
-
-        int ADD_TO_PLAYLIST = 0;
-        int PLAYLIST_SELECTED = 1;
-        int NEW_PLAYLIST = 2;
-    }
-
     private AnalyticsManager analyticsManager;
 
     private SettingsManager settingsManager;
@@ -65,7 +58,7 @@ public class MediaManager {
             setShuffleMode(QueueManager.ShuffleMode.OFF);
         }
 
-        if (songs.size() == 0
+        if (songs.isEmpty()
                 || MusicServiceConnectionUtils.serviceBinder == null
                 || MusicServiceConnectionUtils.serviceBinder.getService() == null) {
 
@@ -428,5 +421,12 @@ public class MediaManager {
         if (MusicServiceConnectionUtils.serviceBinder != null && MusicServiceConnectionUtils.serviceBinder.getService() != null) {
             MusicServiceConnectionUtils.serviceBinder.getService().updateEqualizer();
         }
+    }
+
+    public final class MediaManagerDefs {
+        public static final int ADD_TO_PLAYLIST = 0;
+        public static final int PLAYLIST_SELECTED = 1;
+        public static final int NEW_PLAYLIST = 2;
+        private MediaManagerDefs() {}
     }
 }

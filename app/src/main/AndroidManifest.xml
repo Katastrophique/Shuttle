@@ -179,7 +179,7 @@
             android:name=".services.ArtworkDownloadService"
             android:label="@string/download_service"/>
 
-        <receiver android:name="com.simplecity.amp_library.utils.MediaButtonIntentReceiver">
+        <receiver android:name="com.simplecity.amp_library.utils.MediaButtonIntentReceiver" android:exported="true">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MEDIA_BUTTON"

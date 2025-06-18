@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 class DummyNotificationHelper {
 
-    private static int NOTIFICATION_ID_DUMMY = 5;
+    private static int notificationIdDummy = 5;
 
     private boolean isShowingDummyNotification;
     private boolean isForegroundedByApp = false;
@@ -54,10 +54,10 @@ class DummyNotificationHelper {
                         .setSmallIcon(R.drawable.ic_stat_notification)
                         .build();
 
-                notificationManager.notify(NOTIFICATION_ID_DUMMY, notification);
+                notificationManager.notify(notificationIdDummy, notification);
 
                 if (!isForegroundedByApp) {
-                    service.startForeground(NOTIFICATION_ID_DUMMY, notification);
+                    service.startForeground(notificationIdDummy, notification);
                 }
 
                 isShowingDummyNotification = true;
@@ -92,7 +92,7 @@ class DummyNotificationHelper {
                 }
 
                 NotificationManager notificationManager = service.getSystemService(NotificationManager.class);
-                notificationManager.cancel(NOTIFICATION_ID_DUMMY);
+                notificationManager.cancel(notificationIdDummy);
 
                 isShowingDummyNotification = false;
             }

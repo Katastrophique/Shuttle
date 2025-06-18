@@ -62,7 +62,7 @@ public class AlbumArtist implements
     @Override
     @NonNull
     public String getArtworkKey() {
-        return name;
+        return name == null ? "" : name.toLowerCase();
     }
 
     public static class Builder {

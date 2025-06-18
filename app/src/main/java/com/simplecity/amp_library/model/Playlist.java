@@ -28,7 +28,7 @@ public class Playlist implements Serializable {
     @Type
     public int type;
 
-    private long id;
+    protected long id;
     private String name;
     private boolean canEdit;
     private boolean canClear;

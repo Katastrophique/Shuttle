@@ -1,13 +1,14 @@
 package com.simplecity.amp_library.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Suggestion {
 
     public AlbumArtist mostPlayedArtist;
     public Album mostPlayedAlbum;
     public Song mostPlayedSong;
-    public ArrayList<Song> favouriteSongsOne = new ArrayList<>(3);
+    public List<Song> favouriteSongsOne = new ArrayList<>(3);
     public ArrayList<Song> favouriteSongsTwo = new ArrayList<>(3);
     public ArrayList<Album> recentlyPlayedAlbums = new ArrayList<>(4);
     public ArrayList<Album> recentlyAddedAlbumsOne = new ArrayList<>(2);
@@ -16,7 +17,7 @@ public class Suggestion {
     public Suggestion(AlbumArtist mostPlayedAlbumArtist,
             Album mostPlayedAlbum,
             Song mostPlayedSong,
-            ArrayList<Song> favouriteSongsOne,
+            List<Song> favouriteSongsOne,
             ArrayList<Song> favouriteSongsTwo,
             ArrayList<Album> recentlyPlayedAlbums,
             ArrayList<Album> recentlyAddedAlbumsOne,

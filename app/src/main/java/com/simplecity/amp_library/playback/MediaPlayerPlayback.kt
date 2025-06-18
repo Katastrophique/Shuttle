@@ -30,11 +30,8 @@ internal class MediaPlayerPlayback(context: Context) : LocalPlayback(context), M
 
     override val isPlaying: Boolean
         get() = synchronized(this) {
-            if (!isInitialized || isFadingDown) {
-                return false
-            } else {
-                return currentMediaPlayer?.isPlaying ?: false || isFadingUp
-            }
+            if (!isInitialized || isFadingDown) return false
+            return currentMediaPlayer?.isPlaying ?: false || isFadingUp
         }
 
     override val duration: Long
@@ -45,7 +42,6 @@ internal class MediaPlayerPlayback(context: Context) : LocalPlayback(context), M
                 } catch (e: IllegalStateException) {
                     Log.e(TAG, "Error in getDuration() of MediaPlayerPlayback: " + e.localizedMessage)
                 }
-
             }
             return 0
         }
@@ -58,7 +54,6 @@ internal class MediaPlayerPlayback(context: Context) : LocalPlayback(context), M
                 } catch (e: IllegalStateException) {
                     Log.e(TAG, "Error in getPosition() of MediaPlayerPlayback: " + e.localizedMessage)
                 }
-
             }
             return 0
         }
@@ -296,7 +291,7 @@ internal class MediaPlayerPlayback(context: Context) : LocalPlayback(context), M
     }
 
     override fun updateLastKnownStreamPosition() {
-
+        // This function is intentionally left empty because updating the last known stream position is not required for MediaPlayerPlayback.
     }
 
     private fun createMediaPlayer(context: Context): MediaPlayer {

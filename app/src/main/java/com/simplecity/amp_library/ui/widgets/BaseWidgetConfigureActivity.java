@@ -291,7 +291,7 @@ public abstract class BaseWidgetConfigureActivity extends BaseActivity implement
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return "Layout " + String.valueOf(position + 1);
+            return "Layout " + (position + 1);
         }
 
         @Override
@@ -358,7 +358,6 @@ public abstract class BaseWidgetConfigureActivity extends BaseActivity implement
                     text3.setTextColor(textColor);
                 }
 
-                ImageButton shuffleButton = widgetLayout.findViewById(R.id.shuffle_button);
                 ImageButton prevButton = widgetLayout.findViewById(R.id.prev_button);
                 ImageButton playButton = widgetLayout.findViewById(R.id.play_button);
                 ImageButton skipButton = widgetLayout.findViewById(R.id.next_button);

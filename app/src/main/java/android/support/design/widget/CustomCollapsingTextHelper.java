@@ -309,11 +309,17 @@ public final class CustomCollapsingTextHelper {
                 return Typeface.create(family, Typeface.NORMAL);
             }
         } catch (Exception e) {
-            throw new RuntimeException("Unable to read font family typeface: " + resId);
+            throw new FontFamilyReadException("Unable to read font family typeface: " + resId, e);
         } finally {
             a.recycle();
         }
         return null;
+    }
+
+    static class FontFamilyReadException extends RuntimeException {
+        FontFamilyReadException(String message, Throwable cause) {
+            super(message, cause);
+        }
     }
 
     void setTypefaces(Typeface typeface) {

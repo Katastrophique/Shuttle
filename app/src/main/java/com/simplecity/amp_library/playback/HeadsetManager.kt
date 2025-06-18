@@ -27,14 +27,11 @@ class HeadsetManager(
                 }
 
                 if (intent.hasExtra("state")) {
-                    if (intent.getIntExtra("state", 0) == 0) {
-                        if (playbackSettingsManager.pauseOnHeadsetDisconnect) {
-                            playbackManager.pause(false)
-                        }
-                    } else if (intent.getIntExtra("state", 0) == 1) {
-                        if (playbackSettingsManager.playOnHeadsetConnect) {
-                            playbackManager.play()
-                        }
+                    val state = intent.getIntExtra("state", 0)
+                    if (state == 0 && playbackSettingsManager.pauseOnHeadsetDisconnect) {
+                        playbackManager.pause(false)
+                    } else if (state == 1 && playbackSettingsManager.playOnHeadsetConnect) {
+                        playbackManager.play()
                     }
                 }
             }

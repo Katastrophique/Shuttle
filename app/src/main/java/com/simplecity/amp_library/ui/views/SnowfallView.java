@@ -165,7 +165,7 @@ public class SnowfallView extends View {
 
     void addSnow(int numFlakes) {
         for (int i = 0; i < numFlakes; i++) {
-            final double angle = toRadians(lerp(MIN_ANGLE, MAX_ANGLE, snowRng.nextDouble()));
+            final double angle = toRadians(lerp(MIN_ANGLE, MAX_ANGLE, snowRng.nextInt(10001) / 10000.0));
             final float speed = lerp(MIN_SPEED, MAX_SPEED, snowRng.nextFloat());
             final float velX = (float) ((double) speed * cos(angle));
             final float velY = (float) ((double) speed * sin(angle));
@@ -213,11 +213,13 @@ public class SnowfallView extends View {
         }
 
         float getSnowX() {
-            return snowX += velX;
+            snowX += velX;
+            return snowX;
         }
 
         float getSnowY() {
-            return snowY += velY;
+            snowY += velY;
+            return snowY;
         }
 
         void reset() {

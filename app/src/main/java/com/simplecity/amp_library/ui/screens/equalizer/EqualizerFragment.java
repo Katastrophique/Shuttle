@@ -55,7 +55,7 @@ public class EqualizerFragment extends BaseFragment implements
     /**
      * Max number of EQ bands supported
      */
-    private final static int EQUALIZER_MAX_BANDS = 6;
+    private static final int EQUALIZER_MAX_BANDS = 6;
 
     /**
      * Indicates if Equalizer effect is supported.
@@ -239,10 +239,10 @@ public class EqualizerFragment extends BaseFragment implements
 
         for (int band = 0; band < numberEqualizerBands; band++) {
             //Unit conversion from mHz to Hz and use k prefix if necessary to display
-            float centerFreqHz = centerFreqs[band] / 1000;
+            float centerFreqHz = (float) centerFreqs[band] / 1000;
             String unitPrefix = "";
             if (centerFreqHz >= 1000) {
-                centerFreqHz = centerFreqHz / 1000;
+                centerFreqHz = centerFreqHz / 1000f;
                 unitPrefix = "k";
             }
             (eqContainer.findViewById(eqViewElementIds[band][0])).setVisibility(View.VISIBLE);
@@ -259,10 +259,11 @@ public class EqualizerFragment extends BaseFragment implements
                     if (fromUser) {
                         //Determine which band changed
                         int seekbarId = seekBar.getId();
-                        int band = 0;
+                        int changedBand = 0;
                         for (int i = 0; i < eqViewElementIds.length; i++) {
                             if (eqViewElementIds[i][1] == seekbarId) {
-                                band = i;
+                                changedBand = i;
+                                break;
                             }
                         }
 
@@ -273,7 +274,7 @@ public class EqualizerFragment extends BaseFragment implements
                             }
                         } else {
                             int level = getBandLevelRange()[0] + (progress * 100);
-                            equalizerBandUpdate(band, level);
+                            equalizerBandUpdate(changedBand, level);
                         }
                     }
                 }

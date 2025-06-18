@@ -11,10 +11,12 @@ public class Size {
     public void setHeight(int height) { this.height = height; }
 
     public Size(int width, int height) {
-        {
-            this.width = width;
-            this.height = height;
-        }
+        init(width, height);
+    }
+
+    private void init(int width, int height) {
+        this.width = width;
+        this.height = height;
     }
 
     @Override

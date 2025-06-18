@@ -9,6 +9,8 @@ import com.simplecity.amp_library.rx.UnsafeAction;
 
 public class ViewUtils {
 
+    private ViewUtils() {}
+
     public static void fadeOut(View view, @Nullable UnsafeAction action) {
 
         ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(view, View.ALPHA, 1f, 0f).setDuration(250);

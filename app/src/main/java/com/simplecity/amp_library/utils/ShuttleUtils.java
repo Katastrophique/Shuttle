@@ -49,6 +49,8 @@ public final class ShuttleUtils {
 
     private final static String TAG = "ShuttleUtils";
 
+    private ShuttleUtils() {}
+
     @NonNull
     public static Intent getShuttleStoreIntent(@NonNull String packageName) {
         String uri;

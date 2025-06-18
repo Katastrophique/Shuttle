@@ -22,6 +22,8 @@ import static android.support.annotation.RestrictTo.Scope.LIBRARY_GROUP;
 @RestrictTo(LIBRARY_GROUP)
 final class MaterialDialogsUtil {
 
+  private MaterialDialogsUtil() {}
+
   static boolean shouldSupport() {
     try {
       Class.forName("com.afollestad.materialdialogs.internal.ThemeSingleton");

@@ -2,6 +2,8 @@ package com.simplecity.amp_library.ui.dialog
 
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.view.View
@@ -32,7 +34,10 @@ class UpgradeNagDialog : DialogFragment() {
             .content(context!!.resources.getString(R.string.get_pro_message))
             .positiveText(R.string.btn_upgrade)
             .onPositive { dialog, which ->
-                // Todo: Show IAP or open Play Store
+                // Open Play Store page for the app
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse("https://play.google.com/store/apps/details?id=" + context!!.packageName)
+                startActivity(intent)
             }
             .negativeText(R.string.get_pro_button_no)
 

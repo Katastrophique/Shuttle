@@ -25,6 +25,8 @@ import static android.os.Build.VERSION_CODES.KITKAT;
  */
 public class InputMethodManagerLeaks {
 
+    private InputMethodManagerLeaks() {}
+
     static class ReferenceCleaner
             implements MessageQueue.IdleHandler, View.OnAttachStateChangeListener,
             ViewTreeObserver.OnGlobalFocusChangeListener {

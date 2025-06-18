@@ -37,6 +37,8 @@ import java.lang.reflect.Field;
 @RestrictTo(LIBRARY_GROUP)
 final class TintHelper {
 
+  private TintHelper() {}
+
   @SuppressLint("PrivateResource")
   @ColorInt
   private static int getDefaultRippleColor(@NonNull Context context, boolean useDarkRipple) {

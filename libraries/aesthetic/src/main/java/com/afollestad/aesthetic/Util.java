@@ -34,6 +34,8 @@ import java.lang.reflect.Field;
 @SuppressWarnings("WeakerAccess")
 public final class Util {
 
+  private Util() {}
+
   static void setInflaterFactory(@NonNull LayoutInflater li) {
     LayoutInflaterCompat.setFactory(li, new InflationInterceptor());
   }

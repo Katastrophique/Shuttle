@@ -17,6 +17,8 @@ public class Operators {
 
     private static final String TAG = "Operators";
 
+    private Operators() {}
+
     public static List<Album> songsToAlbums(List<Song> songs) {
 
         HashMap<Long, Album> albumMap = new HashMap<>();

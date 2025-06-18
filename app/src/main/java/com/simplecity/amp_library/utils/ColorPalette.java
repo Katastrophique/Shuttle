@@ -6,6 +6,8 @@ import com.simplecity.amp_library.ShuttleApplication;
 
 public class ColorPalette {
 
+    private ColorPalette() {}
+
     public static int[] getPrimaryColors(Context context, SettingsManager settingsManager) {
         return ShuttleUtils.isUpgraded((ShuttleApplication) context.getApplicationContext(), settingsManager) ? PRIMARY_COLORS : PRIMARY_COLORS_FREE;
     }

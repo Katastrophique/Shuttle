@@ -14,6 +14,8 @@ import java.lang.reflect.Method;
 @RestrictTo(LIBRARY_GROUP)
 final class TextInputLayoutUtil {
 
+  private TextInputLayoutUtil() {}
+
   static void setHint(@NonNull TextInputLayout view, @ColorInt int hintColor) {
     try {
       final Field mDefaultTextColorField =

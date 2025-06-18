@@ -6,6 +6,8 @@ import com.simplecity.amp_library.glide.utils.Size;
 
 public class ResourceUtils {
 
+    private ResourceUtils() {}
+
     /**
      * This method converts dp unit to equivalent pixels, depending on device density.
      *

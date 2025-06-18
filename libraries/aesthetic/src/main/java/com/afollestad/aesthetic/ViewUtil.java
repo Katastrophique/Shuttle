@@ -22,6 +22,8 @@ import static com.afollestad.aesthetic.Util.resolveResId;
 /** @author Aidan Follestad (afollestad) */
 public final class ViewUtil {
 
+  private ViewUtil() {}
+
   @Nullable
   public static Observable<Integer> getObservableForResId(
       @NonNull Context context, @IdRes int resId, @Nullable Observable<Integer> fallback) {

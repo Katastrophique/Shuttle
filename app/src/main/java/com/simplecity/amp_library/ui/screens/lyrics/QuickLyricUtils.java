@@ -20,6 +20,8 @@ public class QuickLyricUtils {
 
     private static final String QUICKLYRIC_URL = "https://d3khd.app.goo.gl/jdF1";
 
+    private QuickLyricUtils() {}
+
     public static boolean isQLInstalled(Context context) {
 
         PackageManager pm = context.getPackageManager();

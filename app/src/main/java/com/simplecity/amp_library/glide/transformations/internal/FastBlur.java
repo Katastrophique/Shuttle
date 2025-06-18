@@ -5,4 +5,6 @@ private static int gsum;
 private static int bsum;
 private static int rsum;
 private static int[] goutsum;
-private static int[] ginsum; 
+private static int[] ginsum;
+
+private FastBlur() {} 

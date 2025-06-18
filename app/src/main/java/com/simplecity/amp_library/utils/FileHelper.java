@@ -43,6 +43,8 @@ public class FileHelper {
      */
     public static final String CURRENT_DIRECTORY = ".";
 
+    private FileHelper() {}
+
     /**
      * Method that check if a file is a symbolic link.
      *

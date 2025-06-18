@@ -11,6 +11,8 @@ import io.reactivex.functions.Consumer;
 /** @author Aidan Follestad (afollestad) */
 public final class Rx {
 
+  private Rx() {}
+
   public static Consumer<Throwable> onErrorLogAndRethrow() {
     return new Consumer<Throwable>() {
       @Override

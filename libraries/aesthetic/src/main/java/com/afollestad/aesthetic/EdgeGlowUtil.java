@@ -39,6 +39,8 @@ final class EdgeGlowUtil {
   private static Field VIEW_PAGER_FIELD_EDGE_GLOW_LEFT;
   private static Field VIEW_PAGER_FIELD_EDGE_GLOW_RIGHT;
 
+  private EdgeGlowUtil() {}
+
   private static void invalidateEdgeEffectFields() {
     if (EDGE_GLOW_FIELD_EDGE != null
         && EDGE_GLOW_FIELD_GLOW != null

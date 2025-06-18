@@ -208,6 +208,9 @@ public class MainController extends BaseNavigationController implements BackPres
                                 pushViewController(GenreDetailFragment.Companion.newInstance(genre), "GenreDetailFragment");
                             }, 250);
                             break;
+                        default:
+                            // No action
+                            break;
                     }
                 }));
 

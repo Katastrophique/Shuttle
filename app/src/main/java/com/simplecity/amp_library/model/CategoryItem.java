@@ -150,8 +150,9 @@ public class CategoryItem {
                 return FolderFragment.newInstance(context.getString(getTitleResId()), true);
             case Type.PLAYLISTS:
                 return PlaylistListFragment.Companion.newInstance(context.getString(getTitleResId()));
+            default:
+                throw new IllegalStateException("Unknown CategoryItem type: " + type);
         }
-        return null;
     }
 
     @Override

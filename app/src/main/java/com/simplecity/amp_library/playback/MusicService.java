@@ -550,8 +550,9 @@ public class MusicService extends MediaBrowserServiceCompat {
                 return ServiceCommand.STOP;
             case MediaButtonCommand.TOGGLE_FAVORITE:
                 return ServiceCommand.TOGGLE_FAVORITE;
+            default:
+                return null;
         }
-        return null;
     }
 
 

@@ -653,8 +653,9 @@ public class FolderFragment extends BaseFragment implements
                 adapter.notifyItemRangeChanged(0, adapter.getItemCount(), 0);
                 updateMenuItems();
                 return true;
+            default:
+                return super.onOptionsItemSelected(menuItem);
         }
-        return false;
     }
 
     FolderMenuUtils.Callbacks callbacks = new FolderMenuUtils.Callbacks() {

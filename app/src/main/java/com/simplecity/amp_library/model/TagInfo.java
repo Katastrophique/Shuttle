@@ -33,6 +33,8 @@ public class TagInfo implements Serializable {
     public int sampleRate;
     public String genre;
 
+    public static final String UNKNOWN = "Unknown";
+
     public TagInfo(String filePath) {
         if (filePath != null) {
             File file = new File(filePath);
@@ -71,7 +73,7 @@ public class TagInfo implements Serializable {
             }
         } catch (UnsupportedOperationException ignored) {
         }
-        return "Unknown";
+        return UNKNOWN;
     }
 
     public static String getBitrate(AudioFile audioFile) {
@@ -82,7 +84,7 @@ public class TagInfo implements Serializable {
             }
         } catch (UnsupportedOperationException ignored) {
         }
-        return "Unknown";
+        return UNKNOWN;
     }
 
     public static String getFormat(AudioFile audioFile) {
@@ -93,7 +95,7 @@ public class TagInfo implements Serializable {
             }
         } catch (UnsupportedOperationException ignored) {
         }
-        return "Unknown";
+        return UNKNOWN;
     }
 
     public static int getSampleRate(AudioFile audioFile) {
@@ -104,6 +106,6 @@ public class TagInfo implements Serializable {
             }
         } catch (UnsupportedOperationException ignored) {
         }
-        return -1;
+        return -1; // -1 signifie que le sample rate est inconnu ou non disponible
     }
 }

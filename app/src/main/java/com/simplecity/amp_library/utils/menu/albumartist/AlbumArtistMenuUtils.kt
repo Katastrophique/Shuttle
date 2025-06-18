@@ -35,7 +35,7 @@ object AlbumArtistMenuUtils {
                     return@OnMenuItemClickListener true
                 }
             }
-            false
+            else -> false
         }
     }
 
@@ -87,7 +87,7 @@ object AlbumArtistMenuUtils {
                     return@OnMenuItemClickListener true
                 }
             }
-            false
+            else -> false
         }
     }
 }

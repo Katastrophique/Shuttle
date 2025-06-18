@@ -195,6 +195,7 @@ class AlbumListFragment :
             ViewType.ALBUM_GRID -> menu.findItem(R.id.view_as_grid).isChecked = true
             ViewType.ALBUM_CARD -> menu.findItem(R.id.view_as_grid_card).isChecked = true
             ViewType.ALBUM_PALETTE -> menu.findItem(R.id.view_as_grid_palette).isChecked = true
+            else -> {}
         }
 
         val gridMenuItem = menu.findItem(MENU_GRID_SIZE)

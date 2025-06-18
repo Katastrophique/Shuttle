@@ -188,6 +188,8 @@ public class FolderView extends BaseSelectableViewModel<FolderView.ViewHolder> {
                 DurationTask durationTask = new DurationTask(holder.lineThree, (FileObject) baseFileObject);
                 durationTask.execute();
                 break;
+            default:
+                throw new IllegalStateException("Unknown view type: " + getViewType());
         }
 
         if (showWhitelist || showBlacklist) {

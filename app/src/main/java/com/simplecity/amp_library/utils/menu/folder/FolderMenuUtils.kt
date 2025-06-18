@@ -180,6 +180,7 @@ object FolderMenuUtils {
             }
             FileType.PARENT -> {
             }
+            else -> null
         }
     }
 

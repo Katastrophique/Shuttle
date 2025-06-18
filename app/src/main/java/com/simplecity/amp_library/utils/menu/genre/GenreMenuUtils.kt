@@ -33,7 +33,7 @@ object GenreMenuUtils {
                     return@OnMenuItemClickListener true
                 }
             }
-            false
+            else -> false
         }
     }
 }

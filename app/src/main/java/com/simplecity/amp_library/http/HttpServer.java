@@ -25,6 +25,10 @@ public class HttpServer {
 
     private boolean isStarted = false;
 
+    private static final String MIME_TEXT_HTML = "text/html";
+    private static final String MIME_TEXT_PLAIN = "text/plain";
+    private static final String MIME_OCTET_STREAM = "application/octet-stream";
+
     public static HttpServer getInstance() {
         if (sHttpServer == null) {
             sHttpServer = new HttpServer();
@@ -173,13 +177,13 @@ public class HttpServer {
 
     private final Map<String, String> MIME_TYPES = new HashMap<String, String>() {{
         put("css", "text/css");
-        put("htm", "text/html");
-        put("html", "text/html");
+        put("htm", MIME_TEXT_HTML);
+        put("html", MIME_TEXT_HTML);
         put("xml", "text/xml");
         put("java", "text/x-java-source, text/java");
-        put("md", "text/plain");
-        put("txt", "text/plain");
-        put("asc", "text/plain");
+        put("md", MIME_TEXT_PLAIN);
+        put("txt", MIME_TEXT_PLAIN);
+        put("asc", MIME_TEXT_PLAIN);
         put("gif", "image/gif");
         put("jpg", "image/jpeg");
         put("jpeg", "image/jpeg");
@@ -195,9 +199,9 @@ public class HttpServer {
         put("pdf", "application/pdf");
         put("doc", "application/msword");
         put("ogg", "application/x-ogg");
-        put("zip", "application/octet-stream");
-        put("exe", "application/octet-stream");
-        put("class", "application/octet-stream");
+        put("zip", MIME_OCTET_STREAM);
+        put("exe", MIME_OCTET_STREAM);
+        put("class", MIME_OCTET_STREAM);
     }};
 
     String getMimeType(String filePath) {

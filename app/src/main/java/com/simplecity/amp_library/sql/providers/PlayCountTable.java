@@ -32,6 +32,8 @@ public class PlayCountTable extends SQLiteOpenHelper {
 
     public static final Uri URI = Uri.parse("content://" + AUTHORITY + "/" + "play_count");
 
+    public static final String FROM = " FROM ";
+
     public PlayCountTable(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
 
